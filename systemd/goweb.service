@@ -1,0 +1,16 @@
+[Unit]
+Description=Tests systemd to daemonize a Go binary
+Documentation=None
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+LogsDirectory=goweb
+ExecStart=/opt/goweb/goweb
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
